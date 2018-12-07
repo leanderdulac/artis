@@ -66,6 +66,7 @@ import ShippingPage from '../../pages/Shipping'
 import PaymentOptionsPage from '../../pages/Payment/PaymentOptions'
 import CreditCardPage from '../../pages/Payment/CreditCard'
 import BoletoPage from '../../pages/Payment/Boleto'
+import EmvPage from '../../pages/Payment/Emv'
 
 import CloseIcon from '../../images/checkout-close.svg'
 
@@ -610,6 +611,7 @@ class Checkout extends React.Component {
     const selectionCallbacks = prop('selection', paymentCallbacks)
     const singleCreditcardCallbacks = prop('singleCreditcard', paymentCallbacks)
     const singleBoletoCallbacks = prop('singleBoleto', paymentCallbacks)
+    const emvCallbacks = prop('emv', paymentCallbacks)
     const boletoTexts = getBoletoInformations(this)
 
     return (
@@ -676,6 +678,16 @@ class Checkout extends React.Component {
         <State value="payment.singleBoleto">
           <BoletoPage
             callbacks={singleBoletoCallbacks}
+            checkoutColors={this.props.checkoutColors}
+            enableCart={enableCart}
+            handlePreviousButton={this.navigatePreviousPage}
+            handleSubmit={this.handleFormSubmit}
+            transaction={transaction}
+          />
+        </State>
+        <State value="payment.emv">
+          <EmvPage
+            callbacks={emvCallbacks}
             checkoutColors={this.props.checkoutColors}
             enableCart={enableCart}
             handlePreviousButton={this.navigatePreviousPage}

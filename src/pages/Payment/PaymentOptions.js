@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
@@ -24,12 +26,19 @@ import BoletoIcon from '../../components/Svg/Boleto'
 import CreditCardIcon from '../../components/Svg/CreditCard'
 import TwoCreditCards from '../../images/two-credit-cards.svg'
 import CradiCardMoreBoleto from '../../images/credit-card-more-boleto.svg'
+import EmvIcon from '../../images/point-of-service.svg'
 
 import { updateFinalAmount } from '../../redux/actions'
 
 const consumeTheme = ThemeConsumer('UIPaymentOptionsPage')
 
 const allowedOptions = props => [
+  {
+    paymentType: 'emv',
+    title: 'Maquininha',
+    icon: <EmvIcon />,
+    transitionTo: 'EMV',
+  },
   {
     paymentType: ['creditcard', 'creditcard'],
     title: '2 Cartões',
@@ -135,6 +144,7 @@ class PaymentOptionsPage extends React.Component {
           icon,
           transitionTo,
         } = option
+
 
         if (not(contains(paymentType, methods))) {
           return buttons

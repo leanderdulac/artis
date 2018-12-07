@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -44,16 +45,20 @@ const NavigationBar = ({
         onClick={handleToggleCart}
         icon={<CartIcon />}
       />
-      <Button
-        fill="gradient"
-        type="submit"
-        iconAlignment="end"
-        icon={<NavigateNext />}
-        disabled={formValid}
-        onClick={handleNextButton}
-      >
-        {nextTitle}
-      </Button>
+      {
+        !handleNextButton 
+          ? ""
+          : (<Button
+            fill="gradient"
+            type="submit"
+            iconAlignment="end"
+            icon={<NavigateNext />}
+            disabled={formValid}
+            onClick={handleNextButton}
+          >
+            {nextTitle}
+          </Button>)
+      }
     </div>
   )
 }

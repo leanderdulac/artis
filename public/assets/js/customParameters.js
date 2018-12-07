@@ -106,6 +106,7 @@ const transaction = {
     ['creditcard', 'boleto'],
     'creditcard',
     'boleto',
+    'emv',
   ],
   defaultMethod: 'creditcard',
   paymentConfig: {

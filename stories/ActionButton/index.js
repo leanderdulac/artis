@@ -40,6 +40,11 @@ storiesOf('ActionButton', module)
         <ActionButton
           icon={<TwoCreditCards />}
           onClick={onClick}
+          title="Maquininha"
+        />
+        <ActionButton
+          icon={<TwoCreditCards />}
+          onClick={onClick}
           title="2 cartões"
         />
       </div>

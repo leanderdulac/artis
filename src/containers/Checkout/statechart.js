@@ -23,9 +23,16 @@ const paymentStates = {
         SINGLE_BOLETO: 'singleBoleto',
         CREDITCARD_AND_BOLETO: 'creditCardAndBoleto',
         MULTIPLE_CREDITCARDS: 'multipleCreditCards',
+        EMV: 'emv',
       },
     },
     singleCreditCard: {
+      on: {
+        SELECTION: 'selection',
+        TRANSACTION: 'transaction',
+      },
+    },
+    emv: {
       on: {
         SELECTION: 'selection',
         TRANSACTION: 'transaction',

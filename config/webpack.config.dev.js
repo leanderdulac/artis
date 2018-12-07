@@ -32,7 +32,7 @@ module.exports = {
     modules: ['node_modules', paths.appNodeModules].concat(
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
     ),
-    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
+    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx', '.wasm'],
     alias: {
       'react-native': 'react-native-web',
     },
@@ -74,6 +74,18 @@ module.exports = {
       },
       {
         oneOf: [
+          {
+            test: /wasm_grett\.js$/,
+            loader: "exports-loader"
+          },
+          {
+            test: /\.wasm$/,
+            type: "javascript/auto",
+            loader: require.resolve('file-loader'),
+            options: {
+              name: 'static/js/[name].[ext]'
+            }
+          },
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
@@ -125,6 +137,7 @@ module.exports = {
             ],
           },
           {
+            type: 'javascript/auto',
             exclude: [/\.js$/, /\.html$/, /\.json$/, /\.svg$/],
             loader: require.resolve('file-loader'),
             options: {
@@ -179,4 +192,5 @@ module.exports = {
   performance: {
     hints: false,
   },
+  mode: 'development',
 }
