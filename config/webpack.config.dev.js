@@ -42,6 +42,16 @@ module.exports = {
   },
   module: {
     strictExportPresence: true,
+    defaultRules: [
+      {
+        type: "javascript/auto",
+        resolve: {}
+      },
+      {
+        test: /\.json$/i,
+        type: "json"
+      },
+    ],
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -75,16 +85,8 @@ module.exports = {
       {
         oneOf: [
           {
-            test: /wasm_grett\.js$/,
-            loader: "exports-loader"
-          },
-          {
-            test: /\.wasm$/,
-            type: "javascript/auto",
-            loader: require.resolve('file-loader'),
-            options: {
-              name: 'static/js/[name].[ext]'
-            }
+            test: /\.wasm/,
+            type: "webassembly/experimental"
           },
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
@@ -137,8 +139,7 @@ module.exports = {
             ],
           },
           {
-            type: 'javascript/auto',
-            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.svg$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.wasm$/, /\.svg$/],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]',

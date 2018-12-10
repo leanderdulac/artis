@@ -29,7 +29,6 @@ import { formatToBRL } from './../../utils/masks/'
 import EmvIcon from '../../images/point-of-service.svg'
 
 const wasm = import('./emv/wasm_grett')
-//import wasm from './emv/wasm_grett'
 
 const consumeTheme = ThemeConsumer('UIBoletoPage')
 
